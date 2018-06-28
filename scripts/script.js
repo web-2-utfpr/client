@@ -6,11 +6,10 @@ TOKEN_HEADER = {
 }
 
 function handleError (err) {
-    console.log(err.responseJSON.error);
+    $("<div/>", { text: err.responseJSON.message}).appendTo("body");
 }
 
 function fetch (path, method='GET', data, headers) {
-    console.log(data);
     let options = {
         url: `${url + path}`,
         type: method,
