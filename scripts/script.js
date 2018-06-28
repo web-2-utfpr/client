@@ -52,9 +52,9 @@ $("#feed").click(() => {
     fetch(`/api/feed/${page}`, 'GET', null, TOKEN_HEADER)
         .done((data) => {
             data.map((element)=> {
-                $("<div/>", { text: element.created_at}).appendTo("body");
-                $("<div/>", { text: element.user.nome}).appendTo("body");
-                $("<img/>", { src: element.url}).appendTo("body");
+                $("<div/>", { text: element.created_at}).appendTo("#feed");
+                $("<div/>", { text: element.user.nome}).appendTo("#feed");
+                $("<img/>", { src: element.url}).appendTo("#feed");
             });
         })
         .fail(handleError);
@@ -63,8 +63,8 @@ $("#feed").click(() => {
 $("#profile").click(() => {
     fetch(`/api/profile/me`, 'GET', null, TOKEN_HEADER)
         .done((data) => {
-            $("<div/>", { text: data.nome}).appendTo("body");
-            $("<div/>", { text: data.email}).appendTo("body");
+            $("<div/>", { text: data.nome}).appendTo("#profile");
+            $("<div/>", { text: data.email}).appendTo("#profile");
         })
         .fail(handleError);
 })
@@ -74,9 +74,9 @@ $("#imagens").click(() => {
     fetch(`/api/profile/images/${username}`, 'GET', null, TOKEN_HEADER)
         .done((data) => {
             data.map((element)=> {
-                $("<div/>", { text: element.created_at}).appendTo("body");
-                $("<div/>", { text: element.user.nome}).appendTo("body");
-                $("<img/>", { src: element.url}).appendTo("body");
+                $("<div/>", { text: element.created_at}).appendTo("#imagens");
+                $("<div/>", { text: element.user.nome}).appendTo("#imagens");
+                $("<img/>", { src: element.url}).appendTo("#imagens");
             })
         })
         .fail(handleError);
@@ -86,9 +86,9 @@ $("#myfeed").click(() => {
     fetch(`/api/profile/images/`, 'GET', null, TOKEN_HEADER)
         .done((data) => {
             data.map((element)=> {
-                $("<div/>", { text: element.created_at}).appendTo("body");
-                $("<div/>", { text: element.user.nome}).appendTo("body");
-                $("<img/>", { src: element.url}).appendTo("body");
+                $("<div/>", { text: element.created_at}).appendTo("#myfeed");
+                $("<div/>", { text: element.user.nome}).appendTo("#myfeed");
+                $("<img/>", { src: element.url}).appendTo("#myfeed");
             })
         })
         .fail(handleError);
@@ -98,7 +98,7 @@ $("#add").click(() => {
     let image = $("#url").val();
     fetch(`/api/profile/images`, 'GET', `url=${image}`, TOKEN_HEADER)
         .done((data) => {
-            console.log(data)
+            $("<div/>", { text: 'A imagem foi adicionada'}).appendTo("#add");
         })
         .fail(handleError);
     
@@ -109,7 +109,7 @@ $("#searchuser").click(() => {
     fetch(`/api/profile/find/${user}`, 'GET', null, TOKEN_HEADER)
         .done((data) => {
             data.map((element)=> {
-            $("<div/>", { text: element.nome }).appendTo("body");
+            $("<div/>", { text: element.nome }).appendTo("#searchuser");
         })
         })
         .fail(handleError);
