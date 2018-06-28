@@ -97,7 +97,7 @@ $("#myfeed").click(() => {
 
 $("#add").click(() => {
     let image = $("#url").val();
-    fetch(`/api/profile/images`, 'GET', `url=${image}`)
+    fetch(`/api/profile/images`, 'GET', `url=${image}`, TOKEN_HEADER)
         .done((data) => {
             console.log(data)
         })
