@@ -6,7 +6,7 @@ TOKEN_HEADER = {
 }
 
 function handleError (err) {
-    $("<div/>", { text: err.responseJSON.message}).appendTo("body");
+    $("<div/>", { text: err.responseJSON}).appendTo("body");
 }
 
 function fetch (path, method='GET', data, headers) {
